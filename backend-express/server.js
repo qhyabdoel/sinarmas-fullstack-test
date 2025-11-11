@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // Mount routes
-app.use("/api/todos", todosRouter);
+app.use("/api", todosRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;

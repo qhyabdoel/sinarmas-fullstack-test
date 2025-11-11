@@ -7,19 +7,37 @@ let todos = []; // In-memory array to store todos
  * @typedef {import('express').Response} Response
  */
 
-// GET /todos Get all todos
 /**
+ * Get all todos
+ *
+ * Get /todos
+ *
  * @param {Request} req
  * @param {Response} res
+ *
+ * @returns {Array} 200 - List of todos
  */
 export const getTodos = (req, res) => {
   res.json(todos);
 };
 
-// POST /todos Create a new todo
 /**
+ * Create a new todo
+ *
+ * POST /todos
+ *
  * @param {Request} req
  * @param {Response} res
+ *
+ * @example
+ * // Request body
+ * {
+ *   "title": "New Todo",
+ *   "completed": false
+ * }
+ *
+ * @returns {Object} 201 - Created todo
+ * @returns {Object} 400 - Invalid request body
  */
 export const createTodo = (req, res) => {
   const { title, completed = false } = req.body;
@@ -38,10 +56,24 @@ export const createTodo = (req, res) => {
   res.status(201).json(newTodo);
 };
 
-// PATCH /todos/:id Update a todo
 /**
+ * Update a todo
+ *
+ * PATCH /todos/:id
+ *
  * @param {Request} req
  * @param {Response} res
+ *
+ * * @example
+ * // Request body
+ * {
+ *   "title": "New Todo",
+ *   "completed": false
+ * }
+ *
+ * @returns {Object} 200 - Updated todo
+ * @returns {Object} 400 - Invalid request body
+ * @returns {Object} 404 - Todo not found
  */
 export const updateTodo = (req, res) => {
   const { id } = req.params;
@@ -59,6 +91,9 @@ export const updateTodo = (req, res) => {
 /**
  * @param {Request} req
  * @param {Response} res
+ *
+ * @returns {Object} 204 - No content
+ * @returns {Object} 404 - Todo not found
  */
 export const deleteTodo = (req, res) => {
   const { id } = req.params;
@@ -69,5 +104,5 @@ export const deleteTodo = (req, res) => {
   }
 
   const deleted = todos.splice(index, 1);
-  res.status(204).json(deleted[0]);
+  res.status(204).send();
 };
