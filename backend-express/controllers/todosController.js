@@ -19,6 +19,7 @@ let todos = []; // In-memory array to store todos
  */
 export const getTodos = (req, res) => {
   res.json(todos);
+  return;
 };
 
 /**
@@ -54,6 +55,7 @@ export const createTodo = (req, res) => {
 
   todos.push(newTodo);
   res.status(201).json(newTodo);
+  return;
 };
 
 /**
@@ -64,7 +66,7 @@ export const createTodo = (req, res) => {
  * @param {Request} req
  * @param {Response} res
  *
- * * @example
+ * @example
  * // Request body
  * {
  *   "title": "New Todo",
@@ -85,6 +87,7 @@ export const updateTodo = (req, res) => {
 
   Object.assign(todo, req.body);
   res.json(todo);
+  return;
 };
 
 // DELETE /todos/:id Delete a todo
@@ -103,6 +106,7 @@ export const deleteTodo = (req, res) => {
     return res.status(404).json({ error: "Todo not found" });
   }
 
-  const deleted = todos.splice(index, 1);
+  todos.splice(index, 1);
   res.status(204).send();
+  return;
 };

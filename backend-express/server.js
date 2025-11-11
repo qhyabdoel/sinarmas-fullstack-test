@@ -2,6 +2,8 @@ import express from "express";
 import todosRouter from "./routes/todos.js";
 
 const app = express();
+
+// Middleware to parse JSON bodies
 app.use(express.json());
 
 // Mount routes
