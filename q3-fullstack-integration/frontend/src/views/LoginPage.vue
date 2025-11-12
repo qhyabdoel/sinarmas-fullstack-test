@@ -1,16 +1,3 @@
-<template>
-  <div class="login">
-    <form @submit.prevent="login" class="login-form">
-      <input v-model="email" type="email" placeholder="Email" required />
-      <input v-model="password" type="password" placeholder="Password" required />
-      <button type="submit" :disabled="loading">
-        {{ loading ? 'Loading...' : 'Login' }}
-      </button>
-    </form>
-    <p v-if="error" class="error">{{ error }}</p>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -41,6 +28,19 @@ const login = async () => {
   }
 }
 </script>
+
+<template>
+  <div class="login">
+    <form @submit.prevent="login" class="login-form">
+      <input v-model="email" type="email" placeholder="Email" required />
+      <input v-model="password" type="password" placeholder="Password" required />
+      <button type="submit" :disabled="loading">
+        {{ loading ? 'Loading...' : 'Login' }}
+      </button>
+    </form>
+    <p v-if="error" class="error">{{ error }}</p>
+  </div>
+</template>
 
 <style scoped>
 .login {

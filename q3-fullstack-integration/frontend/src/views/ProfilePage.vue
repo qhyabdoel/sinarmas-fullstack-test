@@ -1,11 +1,3 @@
-<template>
-  <div>
-    <h2>Profile</h2>
-    <p v-if="loading">Loading...</p>
-    <p>{{ message }}</p>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import api from '@/services/api'
@@ -24,3 +16,11 @@ onMounted(async () => {
   }
 })
 </script>
+
+<template>
+  <div>
+    <h2>Profile</h2>
+    <p v-if="loading">Loading...</p>
+    <p>{{ message }}</p>
+  </div>
+</template>
