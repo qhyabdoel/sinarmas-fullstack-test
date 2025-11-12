@@ -5,14 +5,18 @@ import api from '../services/api'
 import type { ErrorResponse } from '@/types'
 
 const router = useRouter()
+
 const email = ref('')
 const password = ref('')
 const error = ref('')
 const loading = ref(false)
 
+// Login function
 const login = async () => {
   error.value = ''
   loading.value = true
+
+  // Call login API
   try {
     const res = await api.post<{ token: string }>('/login', {
       email: email.value,
