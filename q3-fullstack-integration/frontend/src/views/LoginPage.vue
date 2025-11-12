@@ -22,6 +22,8 @@ const login = async () => {
       email: email.value,
       password: password.value,
     })
+
+    // Save token and redirect to profile
     localStorage.setItem('token', res.data.token)
     router.push('/profile')
   } catch (err: unknown) {

@@ -8,6 +8,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    // List users with their posts
     public function index()
     {
         $users = User::with('posts')->paginate(10);
