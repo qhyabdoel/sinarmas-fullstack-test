@@ -98,18 +98,20 @@ Notes:
 ```bash
 cd q4-laravel-api
 composer install
-cp .env.example .env
-php artisan key:generate
 ```
 
-2. (Optional) If using SQLite, create the database file and update `.env`:
+2. Update .env file
 
 ```bash
-touch database/database.sqlite
-# then set DB_CONNECTION=sqlite and DB_DATABASE=/absolute/path/to/database/database.sqlite in .env
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-3. Run migrations (if provided) and start server
+3. Run migrations
 
 ```bash
 php artisan migrate --seed
@@ -123,14 +125,3 @@ The Laravel dev server listens by default at `http://127.0.0.1:8000`. API routes
 - Blank page in the Vue apps: confirm the app is served by Vite and the browser dev server is running. Check browser console for JS errors.
 - 404 on Laravel `/api/*` routes: ensure `routes/api.php` is loaded in `bootstrap/app.php` (the repo includes a fix if routes were missing).
 - Express routes not found: verify the server is running and that routes are mounted (see `server.js`).
-
-## Notes & Next steps
-
-- This README is intentionally concise. If you'd like, I can:
-  - add example requests (curl/postman) for each endpoint,
-  - expand the frontend setup with environment variable instructions,
-  - add Docker Compose for local, consistent dev environments.
-
----
-
-If you want any of the above additions, tell me which one and I will add it.
