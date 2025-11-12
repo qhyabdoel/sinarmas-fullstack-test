@@ -1,3 +1,33 @@
+<template>
+  <div class="user-profile">
+    <h2>User Profile</h2>
+
+    <form @submit.prevent>
+      <label>
+        Name:
+        <input v-model="profile.name" type="text" />
+        <small v-if="errors.name" class="error">{{ errors.name }}</small>
+      </label>
+
+      <label>
+        Email:
+        <input v-model="profile.email" type="email" />
+        <small v-if="errors.email" class="error">{{ errors.email }}</small>
+      </label>
+
+      <label>
+        Profile Picture URL:
+        <input v-model="profile.profilePicture" type="text" />
+      </label>
+    </form>
+
+    <div class="status">
+      <span v-if="saving">Saving...</span>
+      <span v-else-if="saved">Saved</span>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { UserProfile, UserProfileErrors } from '@/types'
 import { ref, reactive, watch } from 'vue'
@@ -61,36 +91,6 @@ watch(
   { deep: true },
 )
 </script>
-
-<template>
-  <div class="user-profile">
-    <h2>User Profile</h2>
-
-    <form @submit.prevent>
-      <label>
-        Name:
-        <input v-model="profile.name" type="text" />
-        <small v-if="errors.name" class="error">{{ errors.name }}</small>
-      </label>
-
-      <label>
-        Email:
-        <input v-model="profile.email" type="email" />
-        <small v-if="errors.email" class="error">{{ errors.email }}</small>
-      </label>
-
-      <label>
-        Profile Picture URL:
-        <input v-model="profile.profilePicture" type="text" />
-      </label>
-    </form>
-
-    <div class="status">
-      <span v-if="saving">Saving...</span>
-      <span v-else-if="saved">Saved</span>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .user-profile {

@@ -29,7 +29,8 @@ app.post("/login", (req, res) => {
 
 // Middleware
 function auth(req, res, next) {
-  const header = req.header.authorization;
+  const header = req.headers.authorization;
+  console.log("Header:", header);
 
   // Extract token from header
   const token = header && header.split(" ")[1];
