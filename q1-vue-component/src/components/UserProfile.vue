@@ -9,6 +9,7 @@ const profile = reactive<UserProfile>({
   profilePicture: 'https://via.placeholder.com/100',
 })
 
+// State variables for saving status
 const saving = ref<boolean>(false)
 const saved = ref<boolean>(false)
 
